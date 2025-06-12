@@ -1,0 +1,178 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36 Edg/137.0.0.0" version="27.1.4">
+  <diagram name="Page-1" id="IhgbCYOcMPkGsroUWeIR">
+    <mxGraphModel grid="0" page="0" gridSize="10" guides="1" tooltips="1" connect="0" arrows="0" fold="1" pageScale="1" pageWidth="850" pageHeight="1100" background="light-dark(#ffffff, #121212)" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="9Jv2S3auxyT-2URbLdeT-13" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://cb-electronics.com/wp-content/uploads/2017/11/LM2596.jpg;rotation=75;connectable=0;" vertex="1" parent="1">
+          <mxGeometry x="656.0000000000001" y="407" width="111.69" height="111.69" as="geometry" />
+        </mxCell>
+        <mxCell id="zjPIbA5Rt3MyUWwcl-64-64" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;&lt;u&gt;Controller Block Diagram (Version 2)&lt;/u&gt;&lt;/h1&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;align=center;" vertex="1" parent="1">
+          <mxGeometry x="629" y="70" width="430" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bnljFfp5SAxGdxYjFOsb-1" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://images-cdn.ubuy.co.in/63c8b4bd3bcb4d0aea1a0ef3-aitrip-6pcs-for-esp32-devkitc-core-board.jpg;connectable=0;" vertex="1" parent="1">
+          <mxGeometry x="643.97" y="237" width="128.05" height="109.12" as="geometry" />
+        </mxCell>
+        <mxCell id="bnljFfp5SAxGdxYjFOsb-2" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="693" y="417" as="sourcePoint" />
+            <mxPoint x="703" y="337" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bnljFfp5SAxGdxYjFOsb-4" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://www.devobox.com/3180-large_default/dual-axis-xy-joystick-module-for-arduino.jpg;flipH=1;connectable=0;" vertex="1" parent="1">
+          <mxGeometry x="403" y="227" width="110" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="bnljFfp5SAxGdxYjFOsb-5" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="493" y="302" as="sourcePoint" />
+            <mxPoint x="663" y="302" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bnljFfp5SAxGdxYjFOsb-6" value="&lt;div style=&quot;&quot;&gt;&lt;u&gt;Controller Brain (ESP32 WROOM)&lt;/u&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;- Send user controls to the tank (WiFi)&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;- Dual core&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;- Average 200mA draw&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;- Max 250mA draw&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="742" y="157" width="241" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="bnljFfp5SAxGdxYjFOsb-7" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://robotools.in/wp-content/uploads/2022/10/6x6x5mm-Tactile-Push-Button-Switch-4-1.jpg;connectable=0;" vertex="1" parent="1">
+          <mxGeometry x="1003" y="337" width="73" height="73" as="geometry" />
+        </mxCell>
+        <mxCell id="bnljFfp5SAxGdxYjFOsb-10" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://www.pcboard.ca/image/cache/catalog/products/switches/pushbuttons/mini-pb/pushbutton-momentary-red-button-800x800.jpg;connectable=0;" vertex="1" parent="1">
+          <mxGeometry x="1053" y="157" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="bnljFfp5SAxGdxYjFOsb-11" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://robotools.in/wp-content/uploads/2022/10/6x6x5mm-Tactile-Push-Button-Switch-4-1.jpg;connectable=0;" vertex="1" parent="1">
+          <mxGeometry x="1123" y="337" width="73" height="73" as="geometry" />
+        </mxCell>
+        <mxCell id="bnljFfp5SAxGdxYjFOsb-12" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="765.65" y="317" as="sourcePoint" />
+            <mxPoint x="1023" y="367" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bnljFfp5SAxGdxYjFOsb-13" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="771.98" y="307" as="sourcePoint" />
+            <mxPoint x="1143" y="367" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bnljFfp5SAxGdxYjFOsb-14" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="765.65" y="286.12" as="sourcePoint" />
+            <mxPoint x="1093" y="237" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bnljFfp5SAxGdxYjFOsb-17" value="&lt;div style=&quot;&quot;&gt;&lt;u&gt;Turret Control Buttons&lt;/u&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;- For moving the tank turret left and right&lt;/div&gt;&lt;div style=&quot;&quot;&gt;- Button switches&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1024.5" y="407" width="218.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="bnljFfp5SAxGdxYjFOsb-18" value="&lt;div style=&quot;&quot;&gt;&lt;u&gt;Fire Button&lt;/u&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;- Push button switch&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1139" y="177" width="178.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="bnljFfp5SAxGdxYjFOsb-19" value="&lt;div style=&quot;&quot;&gt;&lt;u&gt;Joystick Module&lt;/u&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;- For controlling tank movement&lt;/div&gt;&lt;div style=&quot;&quot;&gt;- Tank-style turning&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="403" y="337" width="218.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="bnljFfp5SAxGdxYjFOsb-20" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;fillColor=#dae8fc;strokeColor=#6c8ebf;entryX=0.543;entryY=0.991;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="bnljFfp5SAxGdxYjFOsb-17">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1182" y="546" as="sourcePoint" />
+            <mxPoint x="1182" y="476" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bnljFfp5SAxGdxYjFOsb-21" value="Consider other types of switches that visually imply rotation of a tank turret better.&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(102, 178, 255), rgb(37, 102, 168));&quot;&gt;Perhaps arrows?&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(102, 178, 255), rgb(37, 102, 168));&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(102, 178, 255), rgb(37, 102, 168));&quot;&gt;Maybe 3D print a button to go overtop of it. This wouldn&#39;t be very difficult and would allow us to not try and house this tiny button on the surface of the controller. We could house it inside then.&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#66B2FF;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1097" y="555" width="303.5" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="9Jv2S3auxyT-2URbLdeT-16" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://cdn.ecommercedns.uk/files/2/258392/1/40083751/18650-3-7v-1200mah-battery.jpg;connectable=0;rotation=-150;" vertex="1" parent="1">
+          <mxGeometry x="592" y="592.74" width="120" height="90.4" as="geometry" />
+        </mxCell>
+        <mxCell id="9Jv2S3auxyT-2URbLdeT-17" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;imageAspect=0;image=https://cdn.ecommercedns.uk/files/2/258392/1/40083751/18650-3-7v-1200mah-battery.jpg;aspect=fixed;flipV=0;flipH=0;connectable=0;rotation=-150;" vertex="1" parent="1">
+          <mxGeometry x="732" y="590" width="123.64" height="93.14" as="geometry" />
+        </mxCell>
+        <mxCell id="9Jv2S3auxyT-2URbLdeT-18" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="592" y="699" as="sourcePoint" />
+            <mxPoint x="712" y="699" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9Jv2S3auxyT-2URbLdeT-19" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="592" y="700" as="sourcePoint" />
+            <mxPoint x="592" y="647" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9Jv2S3auxyT-2URbLdeT-20" value="" style="endArrow=none;html=1;rounded=0;shadow=0;flowAnimation=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="742" y="500" as="sourcePoint" />
+            <mxPoint x="842" y="550" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9Jv2S3auxyT-2URbLdeT-21" value="7.4V" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="677" y="508" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="9Jv2S3auxyT-2URbLdeT-22" value="5V" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="630" y="452.5" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="9Jv2S3auxyT-2URbLdeT-23" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.658;entryY=1.033;entryDx=0;entryDy=0;entryPerimeter=0;bendable=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="691.52" y="506.01" as="sourcePoint" />
+            <mxPoint x="671.9999999999999" y="482.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9Jv2S3auxyT-2URbLdeT-24" value="7.4V" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="788.64" y="585" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="9Jv2S3auxyT-2URbLdeT-25" value="&lt;div style=&quot;&quot;&gt;&lt;u&gt;USB-C Breakout Board&lt;/u&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;- USB-C port for charging&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="741" y="820" width="270" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="9Jv2S3auxyT-2URbLdeT-26" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;u&gt;Buck Converter (LM2596)&lt;/u&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;- Reduces (bucks) the voltage&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;- Maintains a steady 5V&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;- ~90-95% efficient&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;- Rated for 2A&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="767.6899999999999" y="407" width="167" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="9Jv2S3auxyT-2URbLdeT-27" value="&lt;div style=&quot;&quot;&gt;&lt;u&gt;Batteries (18650)&lt;/u&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;- 2 batteries connected in series (2S)&lt;/div&gt;&lt;div style=&quot;&quot;&gt;- Built in protection&lt;/div&gt;&lt;div style=&quot;&quot;&gt;- 3300mAh / battery&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;connectable=0;" vertex="1" parent="1">
+          <mxGeometry x="860" y="599" width="205" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="9Jv2S3auxyT-2URbLdeT-28" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://m.media-amazon.com/images/I/617c6sRPU2L._SL1500_.jpg;connectable=0;" vertex="1" parent="1">
+          <mxGeometry x="640" y="820" width="101" height="101" as="geometry" />
+        </mxCell>
+        <mxCell id="9Jv2S3auxyT-2URbLdeT-29" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="732" y="640" as="sourcePoint" />
+            <mxPoint x="702" y="640" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9Jv2S3auxyT-2URbLdeT-31" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="847" y="630" as="sourcePoint" />
+            <mxPoint x="842" y="550" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9Jv2S3auxyT-2URbLdeT-32" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://electra.store/wp-content/uploads/2024/11/TP5100-Single-42V-Dual-84V-2A-Lithium-Battery-Charging-Board-1306873-descriptionImage3.jpg;connectable=0;" vertex="1" parent="1">
+          <mxGeometry x="667" y="720" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="9Jv2S3auxyT-2URbLdeT-33" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="702" y="790" as="sourcePoint" />
+            <mxPoint x="701" y="850" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9Jv2S3auxyT-2URbLdeT-34" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="712" y="730" as="sourcePoint" />
+            <mxPoint x="712" y="700" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9Jv2S3auxyT-2URbLdeT-35" value="&lt;div style=&quot;&quot;&gt;&lt;u&gt;Charging Module (TP5100)&lt;/u&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;- Charges batteries in 1S or 2S configuration&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="747" y="720" width="270" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="9Jv2S3auxyT-2URbLdeT-36" value="3.7V" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="687" y="585" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="9Jv2S3auxyT-2URbLdeT-37" value="0V" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="562" y="585" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="9Jv2S3auxyT-2URbLdeT-39" value="" style="strokeWidth=3;html=1;shape=mxgraph.flowchart.annotation_2;align=left;labelPosition=right;pointerEvents=1;fontFamily=Helvetica;fontSize=13;labelBackgroundColor=none;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="586" y="820" width="39.25" height="81" as="geometry" />
+        </mxCell>
+        <mxCell id="9Jv2S3auxyT-2URbLdeT-40" value="Could also be replaced with a barrel jack connector depending on what power supply we use" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Helvetica;fontSize=12;fontColor=light-dark(#1891C4,#EDEDED);labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="377" y="793.38" width="201" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9Jv2S3auxyT-2URbLdeT-41" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://www.majju.pk/assets/uploads/2018/10/BARREL-CONNECTORS-DC-JACK-PCB-MOUNT-INTERNAL-X5.5MM.jpg;" vertex="1" parent="1">
+          <mxGeometry x="443.38" y="859.38" width="68.24" height="68.24" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
