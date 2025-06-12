@@ -1,0 +1,15 @@
++========+
+| Camera |
++========+
+- Raspberry Pi camera library
+  Documentation
+  - https://www.raspberrypi.com/documentation/computers/camera_software.html
+  How to install
+  https://www.raspberrypi.com/documentation/computers/camera_software.html#install-libcamera-and-rpicam-apps
+- DRM preview
+  - https://deepwiki.com/raspberrypi/picamera2/4.2-drm-preview
+- UDP video streaming
+  - https://www.raspberrypi.com/documentation/computers/camera_software.html#stream-video-over-a-network-with-rpicam-apps
+- IDK what video codec to use
+
+
