@@ -1,0 +1,8 @@
++=========================+
+| Raspberry Pi Setup List |
++=========================+
+
+1. Put image of “Raspberry Pi OS Lite” on Micro-SD card using the Raspberry Pi installer 
+  a. Configure Wi-Fi and stuff
+2. Put Micro-SD card in Raspberry Pi Zero 2 W
+3. 
