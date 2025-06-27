@@ -1,6 +1,6 @@
 import paho.mqtt.client as mqtt
 
-BROKER = "localhost"  # Use actual IP
+BROKER = "localhost"
 PI_COMMAND_TOPIC = "commands/pi1"
 PI_RESPONSE_TOPIC = "responses/pi1"
 
@@ -11,7 +11,7 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
     print(f"[SERVER] Received from Pi: {msg.payload.decode()}")
 
-client = mqtt.Client("Server")
+client = mqtt.Client(client_id="Server")
 client.on_connect = on_connect
 client.on_message = on_message
 
