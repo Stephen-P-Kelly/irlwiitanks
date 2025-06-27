@@ -20,4 +20,9 @@
 +=======+
 | ESP32 |
 +=======+
-- 
+- Give static IP
+- Establish UDP connection with Pi
+- Create json packet with controller data (sent at 50 Hz to tank)
+  - Send button state ("BUTTON_DOWN" and "BUTTON_UP")
+- Determine if button debouncing is needed
+
