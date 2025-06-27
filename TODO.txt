@@ -1,0 +1,23 @@
++==========+
+| Computer |
++==========+
+- Set up network
+- Test pi connecting to network
+- Increase network capacity
+- MQTT broker
+
++====+
+| Pi |
++====+
+- Give static IP's
+- MQTT client
+- Video streaming
+  - Make resolution 1920x1080 or 720x540
+  - Fullscreen video
+  - Landing page to select tank stream
+  - Video overlay with health (& battery %'s???)
+
++=======+
+| ESP32 |
++=======+
+- 
