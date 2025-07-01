@@ -2,7 +2,7 @@ import paho.mqtt.client as mqtt
 import time
 
 # CHANGE THIS FOR EACH PI (e.g., "pi1", "pi2", etc.)
-PI_ID = "pi1"
+PI_ID = "pi3"
 
 # Replace with your PC's IP
 BROKER = "localhost"
