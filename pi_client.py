@@ -15,6 +15,7 @@ def on_connect(client, userdata, flags, rc):
     client.subscribe("commands/all")
 
 def on_message(client, userdata, msg):
+    global lives
     #command = "pi# says: 'command'""
     command = msg.payload.decode()
     print(f"[{PI_ID.upper()}] Received command: {command}")
@@ -23,7 +24,16 @@ def on_message(client, userdata, msg):
     if "says:" in command:
         #SimpleCommand = 'command'
         SimpleCommand = command.split("says:", 1)[1].strip()
-        print(SimpleCommand)
+        if SimpleCommand == "hit":
+            if lives > 0:
+                lives -= 1
+                print(f"[{PI_ID.upper()}] HIT! Lives remaining: {lives}")
+                if lives == 0:
+                    print(f"[{PI_ID.upper()}] DESTROYED!")
+            else:
+                print(f"[{PI_ID.upper()}] Already destroyed.")
+        else:
+            print(f"[{PI_ID.upper()}] Received non-hit command: {SimpleCommand}")
 
 client = mqtt.Client(client_id=PI_ID)
 client.on_connect = on_connect
