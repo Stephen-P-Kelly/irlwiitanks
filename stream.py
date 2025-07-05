@@ -4,9 +4,11 @@ import socketserver
 from http import server
 from threading import Condition
 
-from picamera2 import Picamera2
+from picamera2 import Picamera2, Preview
 from picamera2.encoders import JpegEncoder
 from picamera2.outputs import FileOutput
+
+from libcamera import Transform
 
 # HTML page for the MJPEG streaming demo
 PAGE = """\
@@ -83,9 +85,8 @@ class StreamingServer(socketserver.ThreadingMixIn, server.HTTPServer):
 
 # Create Picamera2 instance and configure it
 picam2 = Picamera2()
-picam2.configure(picam2.create_video_configuration(main={"size": (1920, 1080)}))
-output = StreamingOutput()
-picam2.start_recording(JpegEncoder(), FileOutput(output))
+picam2.start_preview(Preview.QTGL, x=100, y=200, width=800, height=600, transform = Transform(hflip=1))
+picam2.start()
 
 try:
     # Set up and start the streaming server
