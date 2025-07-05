@@ -33,17 +33,19 @@ PAGE = """\
   #container {
     position: relative;
     width: 100vw;
-    max-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
   #stream {
-    width: 100%;
+    transform: rotate(90deg) scaleX(-1); /* Rotate and flip horizontally */
+    transform-origin: center center;
+    width: 100vh;
     height: auto;
     aspect-ratio: 16 / 9;
-    max-height: 100vh;
     background-color: black;
   }
 
