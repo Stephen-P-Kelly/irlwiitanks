@@ -18,17 +18,39 @@ PAGE = """\
   html, body {
     margin: 0;
     padding: 0;
-    background: black;
+    background-color: black;
     height: 100%;
+    width: 100%;
     overflow: hidden;
   }
-  #stream {
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
+
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
+
+  #container {
+    position: relative;
+    width: 100vw;
+    max-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #stream {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    max-height: 100vh;
+    background-color: black;
+  }
+
   #overlay {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
     background: rgba(0, 0, 0, 0.75);
@@ -44,7 +66,9 @@ PAGE = """\
 </head>
 <body>
 <div id="overlay" onclick="enterFullscreen()">Tap to enter fullscreen</div>
-<img id="stream" src="stream.mjpg" />
+<div id="container">
+  <img id="stream" src="stream.mjpg" />
+</div>
 
 <script>
 function enterFullscreen() {
@@ -52,7 +76,7 @@ function enterFullscreen() {
   if (el.requestFullscreen) {
     el.requestFullscreen();
   } else if (el.webkitRequestFullscreen) {
-    el.webkitRequestFullscreen();
+    el.webkitRequestFullscreen(); // iOS Safari
   } else if (el.msRequestFullscreen) {
     el.msRequestFullscreen();
   }
@@ -62,6 +86,7 @@ function enterFullscreen() {
 </body>
 </html>
 """
+
 
 
 
