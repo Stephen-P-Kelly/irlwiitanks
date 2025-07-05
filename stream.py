@@ -13,58 +13,13 @@ PAGE = """\
 <html>
 <head>
 <title>Raspberry Tips Pi Cam Stream</title>
-<style>
-  body {
-    text-align: center;
-    background-color: #000;
-    margin: 0;
-  }
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-  button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-    z-index: 1000;
-  }
-</style>
 </head>
 <body>
-<h1 style="color: white;">Raspberry Tips Pi Camera Live Stream Demo</h1>
-<img id="stream" src="stream.mjpg" width="1920" height="1080" />
-<br/>
-<button onclick="toggleFullscreen()">Fullscreen</button>
-
-<script>
-function toggleFullscreen() {
-  const img = document.getElementById('stream');
-  if (!document.fullscreenElement) {
-    if (img.requestFullscreen) {
-      img.requestFullscreen();
-    } else if (img.webkitRequestFullscreen) { /* Safari */
-      img.webkitRequestFullscreen();
-    } else if (img.msRequestFullscreen) { /* IE11 */
-      img.msRequestFullscreen();
-    }
-  } else {
-    if (document.exitFullscreen) {
-      document.exitFullscreen();
-    } else if (document.webkitExitFullscreen) { /* Safari */
-      document.webkitExitFullscreen();
-    } else if (document.msExitFullscreen) { /* IE11 */
-      document.msExitFullscreen();
-    }
-  }
-}
-</script>
+<h1>Raspberry Tips Pi Camera Live Stream Demo</h1>
+<img src="stream.mjpg" width="1920" height="1080" />
 </body>
 </html>
 """
-
 
 # Class to handle streaming output
 class StreamingOutput(io.BufferedIOBase):
