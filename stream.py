@@ -12,82 +12,111 @@ from picamera2.outputs import FileOutput
 PAGE = """\
 <html>
 <head>
-<title></title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-  html, body {
-    margin: 0;
-    padding: 0;
-    background-color: black;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-  }
+  <meta charset="UTF-8">
+  <title>Pi Cam Stream</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
 
-  body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+    .player {
+      max-width: 100vw;
+      max-height: 100vh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
 
-  #container {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+    .viewer {
+      width: 100%;
+      height: auto;
+      background: black;
+    }
 
-  #stream {
-    transform: rotate(90deg) scaleX(-1); /* Rotate and flip horizontally */
-    transform-origin: center center;
-    width: 100vh;
-    height: auto;
-    aspect-ratio: 16 / 9;
-    background-color: black;
-  }
+    .player__controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.6);
+    }
 
-  #overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.75);
-    color: white;
-    font-size: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    z-index: 10;
-  }
-</style>
+    .player__button,
+    .fullscreen-btn {
+      background: none;
+      border: 1px solid white;
+      color: white;
+      padding: 5px 10px;
+      margin: 0 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .player__slider {
+      margin: 0 10px;
+    }
+
+    .progress {
+      flex: 1;
+      height: 5px;
+      background: #ccc;
+      margin: 0 10px;
+      cursor: pointer;
+    }
+
+    .progress__filled {
+      width: 0%;
+      background: red;
+      height: 100%;
+      flex: 0;
+    }
+
+    .current, .duration {
+      color: white;
+      font-size: 14px;
+      margin: 0 5px;
+    }
+  </style>
 </head>
 <body>
-<div id="overlay" onclick="enterFullscreen()">Tap to enter fullscreen</div>
-<div id="container">
-  <img id="stream" src="stream.mjpg" />
-</div>
+  <div class="player">
+    <!-- Replace <video> with MJPEG stream -->
+    <img class="player__video viewer" src="stream.mjpg" alt="Camera Stream" />
 
-<script>
-function enterFullscreen() {
-  const el = document.documentElement;
-  if (el.requestFullscreen) {
-    el.requestFullscreen();
-  } else if (el.webkitRequestFullscreen) {
-    el.webkitRequestFullscreen(); // iOS Safari
-  } else if (el.msRequestFullscreen) {
-    el.msRequestFullscreen();
-  }
-  document.getElementById("overlay").style.display = "none";
-}
-</script>
+    <!-- Optional fake controls (non-functional) -->
+    <div class="player__controls">
+      <div class="progress">
+        <div class="progress__filled"></div>
+      </div>
+      <button class="player__button toggle" title="Toggle Play">►</button>
+      <button class="fullscreen-btn" onclick="toggleFullscreen()">FS</button>
+    </div>
+  </div>
+
+  <script>
+    function toggleFullscreen() {
+      const el = document.documentElement;
+      if (el.requestFullscreen) {
+        el.requestFullscreen();
+      } else if (el.webkitRequestFullscreen) {
+        el.webkitRequestFullscreen();
+      } else if (el.msRequestFullscreen) {
+        el.msRequestFullscreen();
+      }
+    }
+  </script>
 </body>
 </html>
 """
+
 
 
 
