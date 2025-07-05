@@ -12,83 +12,14 @@ from picamera2.outputs import FileOutput
 PAGE = """\
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Pi Cam Stream</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      background-color: black;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-    }
-
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-    }
-
-    #stream {
-      width: 100vw;
-      height: auto;
-      max-height: 100vh;
-      object-fit: contain;
-      background: black;
-    }
-
-    #fullscreen-btn {
-      position: absolute;
-      bottom: 20px;
-      right: 20px;
-      z-index: 10;
-      background-color: rgba(255, 255, 255, 0.2);
-      color: white;
-      border: 1px solid white;
-      border-radius: 4px;
-      padding: 8px 14px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    @media (orientation: landscape) {
-      #stream {
-        width: auto;
-        height: 100vh;
-      }
-    }
-  </style>
+<title>Raspberry Tips Pi Cam Stream</title>
 </head>
 <body>
-  <img id="stream" src="stream.mjpg" alt="Live Camera Stream">
-  <button id="fullscreen-btn" onclick="toggleFullscreen()">Fullscreen</button>
-
-  <script>
-    function toggleFullscreen() {
-      const el = document.documentElement;
-      if (el.requestFullscreen) {
-        el.requestFullscreen();
-      } else if (el.webkitRequestFullscreen) { // Safari
-        el.webkitRequestFullscreen();
-      } else if (el.msRequestFullscreen) { // IE11
-        el.msRequestFullscreen();
-      }
-    }
-
-    // Optional: allow screen orientation to follow device
-    if (screen.orientation && screen.orientation.unlock) {
-      screen.orientation.unlock().catch(() => {}); // Not supported in all browsers
-    }
-  </script>
+<h1>Raspberry Tips Pi Camera Live Stream Demo</h1>
+<img src="stream.mjpg" width="1920" height="1080" />
 </body>
 </html>
 """
-
-
-
 
 
 
