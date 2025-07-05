@@ -12,12 +12,10 @@ from picamera2.outputs import FileOutput
 PAGE = """\
 <html>
 <head>
-<title>
-</title>
+<title>Raspberry Tips Pi Cam Stream</title>
 </head>
 <body>
-<h1>
-</h1>
+<h1>Raspberry Tips Pi Camera Live Stream Demo</h1>
 <img src="stream.mjpg" width="1920" height="1080" />
 </body>
 </html>
