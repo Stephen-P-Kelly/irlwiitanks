@@ -14,108 +14,79 @@ PAGE = """\
 <head>
   <meta charset="UTF-8">
   <title>Pi Cam Stream</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <style>
-    body {
+    html, body {
       margin: 0;
-      background: black;
-      font-family: sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      padding: 0;
+      background-color: black;
+      width: 100%;
+      height: 100%;
       overflow: hidden;
     }
 
-    .player {
-      max-width: 100vw;
-      max-height: 100vh;
-      position: relative;
+    body {
       display: flex;
+      justify-content: center;
+      align-items: center;
       flex-direction: column;
     }
 
-    .viewer {
-      width: 100%;
+    #stream {
+      width: 100vw;
       height: auto;
+      max-height: 100vh;
+      object-fit: contain;
       background: black;
     }
 
-    .player__controls {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px;
-      background: rgba(0, 0, 0, 0.6);
-    }
-
-    .player__button,
-    .fullscreen-btn {
-      background: none;
+    #fullscreen-btn {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      z-index: 10;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: white;
       border: 1px solid white;
-      color: white;
-      padding: 5px 10px;
-      margin: 0 5px;
-      cursor: pointer;
+      border-radius: 4px;
+      padding: 8px 14px;
       font-size: 16px;
-    }
-
-    .player__slider {
-      margin: 0 10px;
-    }
-
-    .progress {
-      flex: 1;
-      height: 5px;
-      background: #ccc;
-      margin: 0 10px;
       cursor: pointer;
     }
 
-    .progress__filled {
-      width: 0%;
-      background: red;
-      height: 100%;
-      flex: 0;
-    }
-
-    .current, .duration {
-      color: white;
-      font-size: 14px;
-      margin: 0 5px;
+    @media (orientation: landscape) {
+      #stream {
+        width: auto;
+        height: 100vh;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="player">
-    <!-- Replace <video> with MJPEG stream -->
-    <img class="player__video viewer" src="stream.mjpg" alt="Camera Stream" />
-
-    <!-- Optional fake controls (non-functional) -->
-    <div class="player__controls">
-      <div class="progress">
-        <div class="progress__filled"></div>
-      </div>
-      <button class="player__button toggle" title="Toggle Play">►</button>
-      <button class="fullscreen-btn" onclick="toggleFullscreen()">FS</button>
-    </div>
-  </div>
+  <img id="stream" src="stream.mjpg" alt="Live Camera Stream">
+  <button id="fullscreen-btn" onclick="toggleFullscreen()">Fullscreen</button>
 
   <script>
     function toggleFullscreen() {
       const el = document.documentElement;
       if (el.requestFullscreen) {
         el.requestFullscreen();
-      } else if (el.webkitRequestFullscreen) {
+      } else if (el.webkitRequestFullscreen) { // Safari
         el.webkitRequestFullscreen();
-      } else if (el.msRequestFullscreen) {
+      } else if (el.msRequestFullscreen) { // IE11
         el.msRequestFullscreen();
       }
+    }
+
+    // Optional: allow screen orientation to follow device
+    if (screen.orientation && screen.orientation.unlock) {
+      screen.orientation.unlock().catch(() => {}); // Not supported in all browsers
     }
   </script>
 </body>
 </html>
 """
+
 
 
 
