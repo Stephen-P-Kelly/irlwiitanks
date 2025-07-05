@@ -12,27 +12,56 @@ from picamera2.outputs import FileOutput
 PAGE = """\
 <html>
 <head>
-<title>Raspberry Tips Pi Cam Stream</title>
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: black;
+    height: 100%;
+    overflow: hidden;
+  }
+  #stream {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+  }
+  #overlay {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.75);
+    color: white;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10;
+  }
+</style>
 </head>
 <body>
-<h1>Raspberry Tips Pi Camera Live Stream Demo</h1>
-<img src="stream.mjpg" width="1920" height="1080" />
-
-<video id="tankCam" autoplay playsinline></video>
+<div id="overlay" onclick="enterFullscreen()">Tap to enter fullscreen</div>
+<img id="stream" src="stream.mjpg" />
 
 <script>
-    const video = document.getElementById('tankCam');
-    video.addEventListener('click', () => {
-      if (video.requestFullscreen) video.requestFullscreen();
-      else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen(); // iOS Safari
-      else if (video.msRequestFullscreen) video.msRequestFullscreen(); // IE/Edge
-    });
-  </script>
-  
+function enterFullscreen() {
+  const el = document.documentElement;
+  if (el.requestFullscreen) {
+    el.requestFullscreen();
+  } else if (el.webkitRequestFullscreen) {
+    el.webkitRequestFullscreen();
+  } else if (el.msRequestFullscreen) {
+    el.msRequestFullscreen();
+  }
+  document.getElementById("overlay").style.display = "none";
+}
+</script>
 </body>
 </html>
 """
-
 
 
 
