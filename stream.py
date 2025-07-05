@@ -12,39 +12,23 @@ from picamera2.outputs import FileOutput
 PAGE = """\
 <html>
 <head>
-  <title>Tank Cam</title>
-  <style>
-    body {
-      margin: 0;
-      background-color: black;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    video {
-      width: 320px;
-      max-width: 90vw;
-      border: 2px solid #fff;
-      border-radius: 12px;
-      transform: scaleX(-1); /* Flip horizontally */
-      cursor: pointer;
-    }
-  </style>
+<title>Raspberry Tips Pi Cam Stream</title>
 </head>
 <body>
-  <video id="tankCam" autoplay playsinline></video>
+<h1>Raspberry Tips Pi Camera Live Stream Demo</h1>
+<img src="stream.mjpg" width="1920" height="1080" />
 
-  <script>
+<video id="tankCam" autoplay playsinline></video>
+
+<script>
     const video = document.getElementById('tankCam');
-    video.src = "http://10.0.0.18:8000/stream"; // Replace with your stream URL
-
     video.addEventListener('click', () => {
       if (video.requestFullscreen) video.requestFullscreen();
       else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen(); // iOS Safari
       else if (video.msRequestFullscreen) video.msRequestFullscreen(); // IE/Edge
     });
   </script>
+  
 </body>
 </html>
 """
