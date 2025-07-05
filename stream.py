@@ -37,7 +37,7 @@ PAGE = """\
 
   <script>
     const video = document.getElementById('tankCam');
-    video.src = "stream.mjpg"; // Replace with your stream URL
+    video.src = "http://10.0.0.18:8000/stream"; // Replace with your stream URL
 
     video.addEventListener('click', () => {
       if (video.requestFullscreen) video.requestFullscreen();
