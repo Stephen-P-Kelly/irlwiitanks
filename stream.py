@@ -85,7 +85,7 @@ class StreamingServer(socketserver.ThreadingMixIn, server.HTTPServer):
 
 # Create Picamera2 instance and configure it
 picam2 = Picamera2()
-picam2.start_preview(Preview.QTGL, x=100, y=200, width=800, height=600, transform = Transform(hflip=1))
+picam2.start_preview(Preview.QTGL, x=0, y=0, width=1920, height=1080, transform = Transform(hflip=1))
 picam2.start()
 
 try:
