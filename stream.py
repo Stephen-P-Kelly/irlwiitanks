@@ -8,20 +8,63 @@ from picamera2 import Picamera2
 from picamera2.encoders import JpegEncoder
 from picamera2.outputs import FileOutput
 
-from libcam import Transform
-
 # HTML page for the MJPEG streaming demo
 PAGE = """\
 <html>
 <head>
 <title>Raspberry Tips Pi Cam Stream</title>
+<style>
+  body {
+    text-align: center;
+    background-color: #000;
+    margin: 0;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    z-index: 1000;
+  }
+</style>
 </head>
 <body>
-<h1>Raspberry Tips Pi Camera Live Stream Demo</h1>
-<img src="stream.mjpg" width="1920" height="1080" />
+<h1 style="color: white;">Raspberry Tips Pi Camera Live Stream Demo</h1>
+<img id="stream" src="stream.mjpg" width="1920" height="1080" />
+<br/>
+<button onclick="toggleFullscreen()">Fullscreen</button>
+
+<script>
+function toggleFullscreen() {
+  const img = document.getElementById('stream');
+  if (!document.fullscreenElement) {
+    if (img.requestFullscreen) {
+      img.requestFullscreen();
+    } else if (img.webkitRequestFullscreen) { /* Safari */
+      img.webkitRequestFullscreen();
+    } else if (img.msRequestFullscreen) { /* IE11 */
+      img.msRequestFullscreen();
+    }
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.webkitExitFullscreen) { /* Safari */
+      document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) { /* IE11 */
+      document.msExitFullscreen();
+    }
+  }
+}
+</script>
 </body>
 </html>
 """
+
 
 # Class to handle streaming output
 class StreamingOutput(io.BufferedIOBase):
@@ -85,7 +128,7 @@ class StreamingServer(socketserver.ThreadingMixIn, server.HTTPServer):
 
 # Create Picamera2 instance and configure it
 picam2 = Picamera2()
-picam2.configure(picam2.create_video_configuration(main={"size": (1920, 1080)} Transform(hflip=1)))
+picam2.configure(picam2.create_video_configuration(main={"size": (1920, 1080)}))
 output = StreamingOutput()
 picam2.start_recording(JpegEncoder(), FileOutput(output))
 
