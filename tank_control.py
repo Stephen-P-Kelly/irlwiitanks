@@ -5,7 +5,7 @@
 ###########
 # Imports #
 ###########
-from motor import *
+from motor_driver_TB6612FNG import *
 from time import sleep
 import socket as s
 import json
@@ -22,8 +22,8 @@ BIN2 = x
 PWMB = x
 STBY = x
 #Motor(IN1,IN2,PWM,STANDBY,(Reverse polarity?))
-left_motor = Motor(AIN1, AIN2, PWMA, STBY, False)
-right_motor = Motor(BIN1, BIN2, PWMB, STBY, False)
+left_motor = DCMotor(AIN1, AIN2, PWMA, STBY, False)
+right_motor = DCMotor(BIN1, BIN2, PWMB, STBY, False)
 
 # Servo
 PWM = x
