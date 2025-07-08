@@ -1,0 +1,12 @@
++===================================+
+| Controller -> Tank  - JSON Object |
++===================================+
+
+{
+  "js_x": -1 to 1 (double),
+  "js_y": -1 to 1 (double),
+  "fire": 0 or 1,
+  "left": 0 or 1,
+  "right": 0 or 1,
+}
+  
