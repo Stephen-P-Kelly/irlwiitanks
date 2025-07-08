@@ -3,8 +3,8 @@
 +===================================+
 
 {
-  "js_x": -1 to 1 (double),
-  "js_y": -1 to 1 (double),
+  "js_x": 0 to 1023,
+  "js_y": 0 to 1023,
   "fire": 0 or 1,
   "left": 0 or 1,
   "right": 0 or 1,
