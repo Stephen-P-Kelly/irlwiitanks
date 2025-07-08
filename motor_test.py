@@ -6,15 +6,15 @@ import socket as s
 import json
 
 # Motor Driver
-AIN1 = x
-AIN2 = x
-PWMA = x
-BIN1 = x
-BIN2 = x
-PWMB = x
-STBY = x
+AIN1 = 14
+AIN2 = 15
+PWMA = 18
+BIN1 = 17
+BIN2 = 27
+PWMB = 22
+STBY = 23
 # Servo
-PWM = x
+PWM = 24
 
 print("Initializing motors...")
 left_motor = DCMotor(AIN1, AIN2, PWMA, STBY, False)
