@@ -5,7 +5,7 @@ import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 #GPIO.setmode(GPIO.BOARD)
 
-class Motor:
+class DCMotor:
 	in1 = ""
 	in2 = ""
 	pwm = ""
