@@ -59,14 +59,15 @@ servo.set_angle(180)
 time.sleep(1)
 servo.set_angle(0)
 time.sleep(2)
-for angle=2*range(90)
-  servo.set_angle(angle)
-  time.sleep(0.02)
+for i=range(90): # Going right
+  servo.right()
+  time.sleep(0.04)
 time.sleep(1)
-for angle=180-2*range(90)
-  servo.set_angle(angle)
-  time.sleep(0.02)
+for i=range(90): # Going left
+  servo.left()
+  time.sleep(0.04)
 time.sleep(1)
-print("Done testing servo! :)")
+servo.smooth_dance() # dance :)
+print("Done testing servo!")
 
 
