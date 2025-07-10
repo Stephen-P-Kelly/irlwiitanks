@@ -7,6 +7,8 @@ sudo apt install -y python3-paho-mqtt
 sudo apt install -y python3-picamera2
 sudo apt install -y python3-rpi.gpio
 sudo apt install -y python3-gpiozero
+sudo apt install -y python3-pigpio
+sudo pigpiod # Runs the pi-gpio daemon
 
 echo "\n"
 echo "-=-=-=-=-=-=-=-=-=-=-=-="
