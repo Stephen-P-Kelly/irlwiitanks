@@ -4,6 +4,7 @@ import RPi.GPIO as GPIO
 #See https://raspberrypi.stackexchange.com/a/12967 for more info
 GPIO.setmode(GPIO.BCM)
 #GPIO.setmode(GPIO.BOARD)
+aggression_level = {"slow": 5, "normal": 10, "fast": 20}
 
 class DCMotor:
 	#Constructor
@@ -13,6 +14,7 @@ class DCMotor:
 		self.pwm = pwm
 		self.standbyPin = standbyPin
 		self.reverse = reverse
+		self.speed = 0
 
 		GPIO.setup(in1,GPIO.OUT)
 		GPIO.setup(in2,GPIO.OUT)
@@ -23,16 +25,23 @@ class DCMotor:
 		self.p.start(0)
 
 	def drive(self, speed):
-	    speed = max(-100, min(100, speed))  # Clamp between -100 and 100
+	    self.speed = max(-100, min(100, speed))  # Clamp between -100 and 100
 		
 	    if self.reverse:
-	        speed *= -1
+	        self.speed *= -1
 	
-	    dutyCycle = abs(speed)
+	    dutyCycle = abs(self.speed)
 	
-	    GPIO.output(self.in1, GPIO.HIGH if speed > 0 else GPIO.LOW)
-	    GPIO.output(self.in2, GPIO.LOW if speed > 0 else GPIO.HIGH)
+	    GPIO.output(self.in1, GPIO.HIGH if self.speed > 0 else GPIO.LOW)
+	    GPIO.output(self.in2, GPIO.LOW if self.speed > 0 else GPIO.HIGH)
 	    self.p.ChangeDutyCycle(dutyCycle)
+	
+	def ramp_drive(self, target, step=5):
+		if abs(target - self.speed) < step:
+			self.speed = target
+		else:
+			self.speed = self.speed + step if target > self.speed else self.speed - step
+		self.drive(self.speed)
 
 	def brake(self):
 		self.p.ChangeDutyCycle(0)
