@@ -4,6 +4,8 @@ from random import random
 import time
 import math
 
+MOVE_INCREMENT = 2 # deg
+
 ''' 
 Converts the degrees for the servo to PWM input.
 It is unsafe for the servo to go below 500 us duty cycle or above
@@ -12,7 +14,7 @@ It is unsafe for the servo to go below 500 us duty cycle or above
 	90 deg  -->  1500 us
 	180 deg -->  2490 us
 '''
-deg2pwm = lambda ang: 510 + 11*ang
+deg2pwm = lambda ang: max(500, min(2500, 510 + 11*ang))
 
 
 '''
@@ -45,11 +47,15 @@ class Servo:
 	def get_angle(self):
 		return self.ang
 
-	def stop(self):
-		self.pwm.set_servo_pulsewidth(self.pwm_pin, 0)
+	def CW(self):
+	    self.set_angle(self.ang + MOVE_INCREMENT)
 
-	def reset(self):
-		self.pwm.set_servo_pulsewidth(self.pwm_pin, deg2pwm(0))
+	right = CW
+
+	def CCW(self):
+	    self.set_angle(self.ang - MOVE_INCREMENT)
+
+	left = CCW
 
 	def dance(self):
 		for i in range(10):
@@ -63,6 +69,12 @@ class Servo:
 	        angle = 90 + amplitude * math.sin(2 * math.pi * cycles * t / duration)
 	        self.set_angle(angle)
 	        time.sleep(0.02)
+
+	def stop(self):
+		self.pwm.set_servo_pulsewidth(self.pwm_pin, 0)
+
+	def reset(self):
+		self.pwm.set_servo_pulsewidth(self.pwm_pin, deg2pwm(0))
 
 	def __del__(self):
 		self.pwm.stop()
