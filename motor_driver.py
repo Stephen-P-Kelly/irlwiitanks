@@ -6,17 +6,8 @@ GPIO.setmode(GPIO.BCM)
 #GPIO.setmode(GPIO.BOARD)
 
 class DCMotor:
-	in1 = ""
-	in2 = ""
-	pwm = ""
-	standbyPin = ""
-
-	#Defaults
-	hertz = 1000
-	reverse = False #Reverse flips the direction of the motor
-
 	#Constructor
-	def __init__(self, in1, in2, pwm, standbyPin, reverse):
+	def __init__(self, in1, in2, pwm, standbyPin, reverse=False, hertz=1000):
 		self.in1 = in1
 		self.in2 = in2
 		self.pwm = pwm
@@ -28,27 +19,20 @@ class DCMotor:
 		GPIO.setup(pwm,GPIO.OUT)
 		GPIO.setup(standbyPin,GPIO.OUT)
 		GPIO.output(standbyPin,GPIO.HIGH)
-		self.p = GPIO.PWM(pwm, self.hertz)
+		self.p = GPIO.PWM(pwm, hertz)
 		self.p.start(0)
 
-	#Speed from -100 to 100
 	def drive(self, speed):
-		#Negative speed for reverse, positive for forward
-		#If necessary use reverse parameter in constructor
-		dutyCycle = speed
-		if(speed < 0):
-			dutyCycle = dutyCycle * -1
-
-		if(self.reverse):
-			speed = speed * -1
-
-		if(speed > 0):
-			GPIO.output(self.in1,GPIO.HIGH)
-			GPIO.output(self.in2,GPIO.LOW)
-		else:
-			GPIO.output(self.in1,GPIO.LOW)
-			GPIO.output(self.in2,GPIO.HIGH)
-		self.p.ChangeDutyCycle(dutyCycle)
+	    speed = max(-100, min(100, speed))  # Clamp between -100 and 100
+		
+	    if self.reverse:
+	        speed *= -1
+	
+	    dutyCycle = abs(speed)
+	
+	    GPIO.output(self.in1, GPIO.HIGH if speed > 0 else GPIO.LOW)
+	    GPIO.output(self.in2, GPIO.LOW if speed > 0 else GPIO.HIGH)
+	    self.p.ChangeDutyCycle(dutyCycle)
 
 	def brake(self):
 		self.p.ChangeDutyCycle(0)
@@ -60,4 +44,4 @@ class DCMotor:
 		GPIO.output(self.standbyPin,value)
 
 	def __del__(self):
-		GPIO.cleanup()
+		GPIO.cleanup([self.in1, self.in2, self.pwm, self.standbyPin])
