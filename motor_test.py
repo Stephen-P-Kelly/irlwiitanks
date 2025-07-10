@@ -1,5 +1,6 @@
 from motor_driver_TB6612FNG import *
 from gpiozero import Servo
+import pigpio
 from time import sleep
 from variables import *
 import socket as s
@@ -17,11 +18,20 @@ STBY = 23
 PWM = 24
 
 print("Initializing motors...")
+# DC
 left_motor = DCMotor(AIN1, AIN2, PWMA, STBY, False)
 right_motor = DCMotor(BIN1, BIN2, PWMB, STBY, False)
 left_motor.standby(True)
 right_motor.standby(True)
-servo = Servo(PWM, initial_value=0)
+# Servo
+try:
+  pwm = pigpio.pi()
+  pwm.set_mode(PWM, pigpio.OUTPUT)
+  pwm.set_PWM_frequency(PWM, 50)
+  pwm.set_PWM_dutycycle(PWM, 13)
+except (pigpio.error) as e:
+  print("Erorr setting up servos! - '" + str(e) + "'")
+# servo = Servo(PWM, initial_value=0) # Sucks because it's software PWM
 
 print("Testing DC motors...")
 for i in range(11): # ramp speed
