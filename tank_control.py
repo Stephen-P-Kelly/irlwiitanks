@@ -82,13 +82,16 @@ try:
     
     # DC Motor Control #
     # Motor speeds are between -100 and 100
-    base_speed = round(100 * ((control_data["js_y"] - CONTROLLER_ADC_MAX/2) / (CONTROLLER_ADC_MAX / 2))) # -100 to 100
-    turn_adjust = round(100 * ((control_data["js_x"] - CONTROLLER_ADC_MAX/2) / (CONTROLLER_ADC_MAX / 2))) # -100 to 100
+    base_speed = round(100 * ((control_data["js_y"] - CONTROLLER_ADC_MAX/2) / (CONTROLLER_ADC_MAX / 2)))
+    turn_adjust = round(100 * ((control_data["js_x"] - CONTROLLER_ADC_MAX/2) / (CONTROLLER_ADC_MAX / 2)))
+    # Dead zone from -5 to 5 (reducing jitter)
+    if abs(base_speed) < 5: base_speed = 0
+    if abs(turn_adjust) < 5: turn_adjust = 0
     
     left_speed = max(-100, min(base_speed - turn_adjust, 100)) # Clamps speed between -100 and 100
     right_speed = max(-100, min(base_speed + turn_adjust, 100)) # Clamps speed between -100 and 100
     
-    left_motor.drive(left_speed) # drive left motor
+    left_motor.drive() # drive left motor
     right_motor.drive(right_speed) # drive right motor
   
     # Servo Motor Control #
