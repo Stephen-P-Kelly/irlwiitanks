@@ -1,10 +1,7 @@
-from motor_driver_TB6612FNG import *
-from gpiozero import Servo
-import pigpio
+import motor_driver
+import servo_driver
 from time import sleep
 from variables import *
-import socket as s
-import json
 
 # Motor Driver
 AIN1 = 14
@@ -24,13 +21,7 @@ right_motor = DCMotor(BIN1, BIN2, PWMB, STBY, False)
 left_motor.standby(True)
 right_motor.standby(True)
 # Servo
-try:
-  pwm = pigpio.pi()
-  pwm.set_mode(PWM, pigpio.OUTPUT)
-  pwm.set_PWM_frequency(PWM, 50)
-  pwm.set_PWM_dutycycle(PWM, 13)
-except (pigpio.error) as e:
-  print("Erorr setting up servos! - '" + str(e) + "'")
+servo = Servo(PWM)
 # servo = Servo(PWM, initial_value=0) # Sucks because it's software PWM
 
 print("Testing DC motors...")
@@ -60,22 +51,22 @@ print("Done testing motors! :)")
 time.sleep(3)
 
 print("Testing servo...")
-servo.min()
+servo.set_angle(0)
 time.sleep(1)
-servo.mid()
+servo.set_angle(90)
 time.sleep(1)
-servo.max()
+servo.set_angle(180)
 time.sleep(1)
-servo.min()
-time.sleep(1)
-while servo.value < 1:
-  servo.value += SERVO_INCREMENT
+servo.set_angle(0)
+time.sleep(2)
+for angle=2*range(90)
+  servo.set_angle(angle)
   time.sleep(0.02)
 time.sleep(1)
-while servo.value > -1:
-  servo.value -= SERVO_INCREMENT
+for angle=180-2*range(90)
+  servo.set_angle(angle)
   time.sleep(0.02)
+time.sleep(1)
 print("Done testing servo! :)")
-time.sleep(1)
 
 
