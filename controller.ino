@@ -1,4 +1,5 @@
 #include <WiFi.h>
+#include <WiFiUDP.h>
 #include <ArduinoJson.h>
 
 // Pin Assignments
@@ -22,13 +23,14 @@ IPAddress gateway(192, 168, 137, 1);
 IPAddress subnet(255, 255, 255, 0);
 
 void setup() {
+  // Setup pins
   pinMode(JOYSTICK_VRX, INPUT);
   pinMode(JOYSTICK_VRY, INPUT);
   pinMode(JOYSTICK_SW, INPUT);
   pinMode(BARREL_LEFT, INPUT);
   pinMode(BARREL_RIGHT, INPUT);
   pinMode(FIRE_BUTTON, INPUT);
-
+  
   analogReadResolution(x);
   
   WiFi.begin(ssid, pass);
