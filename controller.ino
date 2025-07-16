@@ -10,18 +10,23 @@ int BARREL_LEFT = x;
 int BARREL_RIGHT = x;
 int FIRE_BUTTON = x;
 // Analog Values
-JsonDocument control_data; // "js_x", "js_y", "left", "right", "fire"
-int analog_resolution = x;
+int JSON_DOCUMENT_SIZE = 256; // Bytes
+StaticJsonDocument<JSON_DOCUMENT_SIZE> control_data; // "js_x", "js_y", "left", "right", "fire"
+int analog_resolution = 4096;
 // WiFi
 char ssid[] = "TankGame";
 char pass[] = "12345678";
 char hostname[] = "greentank";
-int ip[] = [192, 168, 137, 21];
-IPAddress local_IP = local_IP(ip[0], ip[1], ip[2], ip[3]);
-IPAddress gateway = gateway(192, 168, 137, 1);
-IPAddress subnet = subnet(255, 255, 255, 0);
+int ip[] = {192, 168, 137, 20};
+IPAddress local_IP(ip[0], ip[1], ip[2], ip[3]);
+IPAddress gateway(192, 168, 137, 1);
+IPAddress subnet(255, 255, 255, 0);
+// UDP
 WiFiUDP udp;
+int tank_ip[] = {192, 168, 137, 10};
+IPAddress tank_IP(tank_ip[0], tank_ip[1], tank_ip[2], tank_ip[3]);
 int tank_rx_port = x;
+char serial[255];
 
 void setup() {
   // Setup pins
@@ -37,31 +42,30 @@ void setup() {
   // Connect to WiFi
   Serial.print("Attempting to connect to SSID: ");
   Serial.print(ssid);
-  while (status != WL_CONNECTED) {
-    status = WiFi.begin(ssid);
+  while (WiFi.begin(ssid) != WL_CONNECTED) {
     delay(1000);
     Serial.print(".");
   }
   Serial.println("Connected! :)");
-  printWifiStatus();
   // Configuring device
   if (!WiFi.config(local_IP, gateway, subnet)) {
     Serial.println("STA Failed to configure! :(");
   }
   WiFi.setHostname(hostname);
-
-  // Start UDP connection with tank
-  Serial.println("\nBeginning UDP connection with tank...");
-  Udp.begin(localPort);
-  ++++++++++++++++++++++++++++++++
 }
 
 void loop() {
+  // Collect pin info
   control_data["js_x"] = analogRead(JOYSTICK_VRX);
   control_data["js_y"] = analogRead(JOYSTICK_VRY);
   control_data["left"] = analogRead(BARREL_LEFT);
   control_data["right"] = analogRead(BARREL_RIGHT);
   control_data["fire"] = analogRead(FIRE_BUTTON);
-
-  
+  serializeJson(control_data, serial);
+  // Make + send UDP packet to tank
+  udp.beginPacket(tank_IP, tank_port);
+  udp.write(serial);
+  udp.endPacket();
+  // Delay for 20 ms (results in 50 Hz)
+  delay(20);
 }
