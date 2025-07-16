@@ -3,16 +3,16 @@
 #include <ArduinoJson.h>
 
 // Pin Assignments
-#define JOYSTICK_VRX x;
-#define JOYSTICK_VRY x;
-#define JOYSTICK_SW x;
-#define BARREL_LEFT x;
-#define BARREL_RIGHT x;
-#define FIRE_BUTTON x;
+const int JOYSTICK_VRX =  x;
+const int JOYSTICK_VRY = x;
+const int JOYSTICK_SW = x;
+const int BARREL_LEFT = x;
+const int BARREL_RIGHT = x;
+const int FIRE_BUTTON = x;
 // Analog Values
-#define JSON_DOCUMENT_SIZE 256; // Bytes
+const int JSON_DOCUMENT_SIZE = 256; // Bytes
 StaticJsonDocument<JSON_DOCUMENT_SIZE> control_data; // "js_x", "js_y", "left", "right", "fire"
-#define analog_resolution 4096;
+const int analog_resolution = 4096;
 // WiFi
 char ssid[] = "TankGame";
 char pass[] = "12345678";
