@@ -42,7 +42,7 @@ void setup() {
   // configure pins
   pinMode(JOYSTICK_VRX, INPUT);
   pinMode(JOYSTICK_VRY, INPUT);
-  pinMode(JOYSTICK_SW, INPUT_PULLUP);
+  // pinMode(JOYSTICK_SW, INPUT_PULLUP);
   pinMode(BARREL_LEFT, INPUT_PULLUP);
   pinMode(BARREL_RIGHT, INPUT_PULLUP);
   pinMode(FIRE_BUTTON, INPUT_PULLUP);
@@ -81,7 +81,7 @@ void loop() {
   // read controls
   control_data["js_x"]   = analogRead(JOYSTICK_VRX);
   control_data["js_y"]   = analogRead(JOYSTICK_VRY);
-  control_data["sw"]     = digitalRead(JOYSTICK_SW)   == LOW ? 1 : 0;
+  // control_data["sw"]     = digitalRead(JOYSTICK_SW)   == LOW ? 1 : 0;
   control_data["left"]   = digitalRead(BARREL_LEFT)   == LOW ? 1 : 0;
   control_data["right"]  = digitalRead(BARREL_RIGHT)  == LOW ? 1 : 0;
   control_data["fire"]   = digitalRead(FIRE_BUTTON)   == LOW ? 1 : 0;
