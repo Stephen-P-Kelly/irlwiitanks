@@ -13,14 +13,15 @@ int FIRE_BUTTON = x;
 JsonDocument control_data; // "js_x", "js_y", "left", "right", "fire"
 int analog_resolution = x;
 // WiFi
-char* ssid = "TankGame"
-char* pass = "12345678"
-char* hostname = "greentank"
-int ip[] = [192, 168, 137, 21]
-
-IPAddress local_IP(ip[0], ip[1], ip[2], ip[3]);
-IPAddress gateway(192, 168, 137, 1);
-IPAddress subnet(255, 255, 255, 0);
+char ssid[] = "TankGame";
+char pass[] = "12345678";
+char hostname[] = "greentank";
+int ip[] = [192, 168, 137, 21];
+IPAddress local_IP = local_IP(ip[0], ip[1], ip[2], ip[3]);
+IPAddress gateway = gateway(192, 168, 137, 1);
+IPAddress subnet = subnet(255, 255, 255, 0);
+WiFiUDP udp;
+int tank_rx_port = x;
 
 void setup() {
   // Setup pins
@@ -32,12 +33,27 @@ void setup() {
   pinMode(FIRE_BUTTON, INPUT);
   
   analogReadResolution(x);
-  
-  WiFi.begin(ssid, pass);
-  if (!WiFi.config(local_IP, gateway, subnet)) {
-    Serial.println("STA Failed to configure");
+
+  // Connect to WiFi
+  Serial.print("Attempting to connect to SSID: ");
+  Serial.print(ssid);
+  while (status != WL_CONNECTED) {
+    status = WiFi.begin(ssid);
+    delay(1000);
+    Serial.print(".");
   }
-  WiFi.setHostname(hostname); //define hostname
+  Serial.println("Connected! :)");
+  printWifiStatus();
+  // Configuring device
+  if (!WiFi.config(local_IP, gateway, subnet)) {
+    Serial.println("STA Failed to configure! :(");
+  }
+  WiFi.setHostname(hostname);
+
+  // Start UDP connection with tank
+  Serial.println("\nBeginning UDP connection with tank...");
+  Udp.begin(localPort);
+  ++++++++++++++++++++++++++++++++
 }
 
 void loop() {
@@ -46,4 +62,6 @@ void loop() {
   control_data["left"] = analogRead(BARREL_LEFT);
   control_data["right"] = analogRead(BARREL_RIGHT);
   control_data["fire"] = analogRead(FIRE_BUTTON);
+
+  
 }
