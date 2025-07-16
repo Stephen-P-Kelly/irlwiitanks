@@ -1,7 +1,6 @@
 import motor_driver
 import servo_driver
 from time import sleep
-from variables import *
 
 # Motor Driver
 AIN1 = 14
