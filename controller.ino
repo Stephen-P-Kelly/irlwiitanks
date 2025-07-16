@@ -12,7 +12,7 @@ const int FIRE_BUTTON = x;
 // Analog Values
 const int JSON_DOCUMENT_SIZE = 256; // Bytes
 StaticJsonDocument<JSON_DOCUMENT_SIZE> control_data; // "js_x", "js_y", "left", "right", "fire"
-const int analog_resolution = 4096;
+const int ANALOG_RESOLUTION = 4096;
 // WiFi
 char ssid[] = "TankGame";
 char pass[] = "12345678";
@@ -37,7 +37,7 @@ void setup() {
   pinMode(BARREL_RIGHT, INPUT);
   pinMode(FIRE_BUTTON, INPUT);
   
-  analogReadResolution(x);
+  analogReadResolution(ANALOG_RESOLUTION);
 
   // Connect to WiFi
   Serial.print("Attempting to connect to SSID: ");
