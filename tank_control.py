@@ -9,9 +9,16 @@ from motor_driver import DCMotor
 from servo_driver import Servo
 from time import sleep
 from datetime import datetime
-from variables import *
 import socket as s
 import json
+
+#############
+# Variables #
+#############
+CONTROLLER_ADC_MAX = 4096
+MAX_WHEEL_SPEED = 100
+BARREL_SPEED = 0.018 # 90 deg / s
+BARREL_MAX_ANGLE = 180
 
 ##############
 # Parameters #
