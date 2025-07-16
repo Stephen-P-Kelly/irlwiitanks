@@ -48,7 +48,7 @@ void setup() {
   pinMode(FIRE_BUTTON, INPUT_PULLUP);
 
   // apply static IP configuration *before* connecting
-  Serial.printf("Giving controller static IP %s... ", local_IP.toString().c_str());
+  Serial.printf("Giving the controller a static IP of %s... ", local_IP.toString().c_str());
   if (!WiFi.config(local_IP, gateway, subnet)) {
     Serial.println("FAILED");
   } else {
