@@ -16,7 +16,7 @@ const int ANALOG_RESOLUTION = 4096;
 // WiFi
 char ssid[] = "TankGame";
 char pass[] = "12345678";
-char hostname[] = "greentank";
+char hostname[] = "greencontroller";
 int ip[] = {192, 168, 137, 20};
 IPAddress local_IP(ip[0], ip[1], ip[2], ip[3]);
 IPAddress gateway(192, 168, 137, 1);
