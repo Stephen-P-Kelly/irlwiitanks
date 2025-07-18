@@ -2,29 +2,29 @@ import os
 import subprocess
 import time
 
-# Define paths to your scripts
-camera_script = '/home/pi/camera_stream.py'
-udp_script = '/home/pi/udp_handler.py'
-mqtt_script = '/home/pi/mqtt_client.py'
+client_script = 'tank_client.py'
+camera_script = 'tank_video.py'
+control_script = 'tank_control.py'
 
-# Core assignments (you can change these as needed)
 core_map = {
     mqtt_script: [0],
     udp_script: [1],
     camera_script: [2, 3]
 }
 
-# Function to launch a script on a specific core
 def launch_script(script_path, cores):
-    # Set CPU affinity for the current process
     pid = os.fork()
-    if pid == 0:  # Child process
+    if pid == 0:  # child process gets pid 0
         os.sched_setaffinity(0, cores)
         os.execvp('python3', ['python3', script_path])
 
-# Launch each script on its designated core
+# setup
+os.system("sudo pigpiod") # run Pi GPIO daemon (required for servo to work)
+# another line to run the mqtt thing?? That might just be for the server
+
+# run scripts on separate cores
 launch_script(mqtt_script, core_map[mqtt_script])
-time.sleep(1)  # Optional: small delay between launches
+time.sleep(1)
 launch_script(udp_script, core_map[udp_script])
 time.sleep(1)
 launch_script(camera_script, core_map[camera_script])
