@@ -64,16 +64,16 @@ def main():
 #        except UnicodeDecodeError as e:
 #            print("Corrupt handshake bytes:", e)
 #            continue
-
-        print(f"Received handshake message: '{msg}' from {addr}")
-        if msg == HANDSHAKE_MSG and addr[0] == CONTROLLER_IP_ADDR:
-            print(f"Handshake OK from {addr}")
-            break
-        else:
-            print("Unexpected handshake or IP. Waiting...")
-
-    print("Entering main control loop.")
-
+#
+#        print(f"Received handshake message: '{msg}' from {addr}")
+#        if msg == HANDSHAKE_MSG and addr[0] == CONTROLLER_IP_ADDR:
+#            print(f"Handshake OK from {addr}")
+#            break
+#        else:
+#            print("Unexpected handshake or IP. Waiting...")
+#
+#    print("Entering main control loop.")
+#
     # Main control loop
     while True:
         try:
