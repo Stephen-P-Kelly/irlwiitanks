@@ -76,19 +76,19 @@ def main():
 #
     # Main control loop
   # Main control loop
-  while True:
-    try:
-      raw, addr = tank_socket.recvfrom(JSON_DOCUMENT_SIZE)
-      print(f"Received packet from {addr}")
-    except socket.timeout:
-      print("No command received — stopping motors.")
-      left_motor.drive(0)
-      right_motor.drive(0)
-      continue
+    while True:
+        try:
+          raw, addr = tank_socket.recvfrom(JSON_DOCUMENT_SIZE)
+          print(f"Received packet from {addr}")
+        except socket.timeout:
+          print("No command received — stopping motors.")
+          left_motor.drive(0)
+          right_motor.drive(0)
+          continue
 
     # Decode JSON
     try:
-      control_data = json.loads(raw.decode("utf-8"))
+        control_data = json.loads(raw.decode("utf-8"))
     except (json.JSONDecodeError, UnicodeDecodeError) as e:
       print("Invalid JSON packet:", e)
       continue
