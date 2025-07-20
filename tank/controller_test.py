@@ -75,62 +75,67 @@ def main():
 #    print("Entering main control loop.")
 #
     # Main control loop
-    while True:
-        print("Main Loop is Working")
-        try:
-            raw, addr = tank_socket.recvfrom(JSON_DOCUMENT_SIZE)
-        except socket.timeout:
-            print("No command received—stopping motors.")
-            left_motor.drive(0)
-            right_motor.drive(0)
-            servo.stop()
-            continue
+  # Main control loop
+  while True:
+    try:
+      raw, addr = tank_socket.recvfrom(JSON_DOCUMENT_SIZE)
+      print(f"Received packet from {addr}")
+    except socket.timeout:
+      print("No command received — stopping motors.")
+      left_motor.drive(0)
+      right_motor.drive(0)
+      continue
 
-        # Ignore packets from unexpected sources
-        if addr[0] != CONTROLLER_IP_ADDR:
-            print(f"Ignoring packet from unknown source: {addr}")
-            continue
+    # Decode JSON
+    try:
+      control_data = json.loads(raw.decode("utf-8"))
+    except (json.JSONDecodeError, UnicodeDecodeError) as e:
+      print("Invalid JSON packet:", e)
+      continue
 
-        try:
-            control_data = json.loads(raw.decode("utf-8"))
-        except (json.JSONDecodeError, UnicodeDecodeError) as e:
-            print("Invalid JSON packet:", e)
-            continue
+    # Validate keys
+    expected_keys = {"js_x", "js_y", "left", "right", "fire"}
+    if not expected_keys.issubset(control_data):
+      print("Missing keys in control data:", control_data.keys())
+      continue
 
-        # Validate keys
-        expected_keys = {"js_x", "js_y", "left", "right", "fire"}
-        if not expected_keys.issubset(control_data):
-            print("Missing keys in control data:", control_data.keys())
-            continue
+    # ───── DC Motor Logic ─────
+    # Convert joystick values to -100 to +100
+    js_x = control_data["js_x"]
+    js_y = control_data["js_y"]
+    base_speed = round(100 * ((js_y - CONTROLLER_ADC_MAX/2) / (CONTROLLER_ADC_MAX/2)))
+    turn_adjust = round(100 * ((js_x - CONTROLLER_ADC_MAX/2) / (CONTROLLER_ADC_MAX/2)))
 
-        # Calculate wheel speeds
-        base_speed  = round(MAX_WHEEL_SPEED * ((control_data["js_y"] - CONTROLLER_ADC_MAX/2) / (CONTROLLER_ADC_MAX/2)))
-        turn_adjust = round(MAX_WHEEL_SPEED * ((control_data["js_x"] - CONTROLLER_ADC_MAX/2) / (CONTROLLER_ADC_MAX/2)))
+    # Dead zones
+    if abs(base_speed) < 5:
+      base_speed = 0
+    if abs(turn_adjust) < 5:
+      turn_adjust = 0
 
-        # Dead zones
-        if abs(base_speed) < 5:  base_speed = 0
-        if abs(turn_adjust) < 5: turn_adjust = 0
+    # Calculate final speeds
+    left_speed = max(-MAX_WHEEL_SPEED, min(base_speed - turn_adjust, MAX_WHEEL_SPEED))
+    right_speed = max(-MAX_WHEEL_SPEED, min(base_speed + turn_adjust, MAX_WHEEL_SPEED))
 
-        left_speed  = max(-MAX_WHEEL_SPEED, min(base_speed - turn_adjust, MAX_WHEEL_SPEED))
-        right_speed = max(-MAX_WHEEL_SPEED, min(base_speed + turn_adjust, MAX_WHEEL_SPEED))
+    print(f"Left Speed: {left_speed}, Right Speed: {right_speed}")
+    left_motor.drive(left_speed)
+    right_motor.drive(right_speed)
 
-        # Drive motors
-        left_motor.drive(left_speed)
-        right_motor.drive(right_speed)
+    # ───── Servo Logic ─────
+    if control_data["left"] != control_data["right"]:
+      if control_data["left"] == 1:
+        print("Turning barrel left")
+        servo.left()
+      elif control_data["right"] == 1:
+        print("Turning barrel right")
+        servo.right()
+    else:
+      print("Stopping barrel")
+      servo.stop()
 
-        # Servo control
-        if control_data["left"] != control_data["right"]:
-            if control_data["left"] == 1:
-                servo.left()
-            if control_data["right"] == 1:
-                servo.right()
-        else:
-            servo.stop()
+    # ───── Fire Placeholder ─────
+    if control_data["fire"] == 1:
+      print("Fire button pressed")
 
-        # Fire button placeholder
-        if control_data["fire"] == 1:
-            # Implement firing sequence here
-            print("Firing!")
 
 if __name__ == "__main__":
     try:
