@@ -2,7 +2,7 @@ import socket
 import json
 
 # ──────── Network Setup ────────
-UDP_IP = "10.0.0.18"
+UDP_IP = ""
 UDP_PORT = 4210
 
 # ──────── Socket Setup ────────
