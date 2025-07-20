@@ -13,7 +13,7 @@ MAX_WHEEL_SPEED      = 100
 BARREL_SPEED         = 0.018   # 90°/s
 BARREL_MAX_ANGLE     = 180     # degrees
 JSON_DOCUMENT_SIZE   = 256     # bytes
-SOCKET_TIMEOUT       = 5       # seconds
+SOCKET_TIMEOUT       = 50       # seconds
 
 # Motor Driver pins
 AIN1 = 14
