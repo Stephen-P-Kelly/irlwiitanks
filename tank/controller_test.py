@@ -76,6 +76,7 @@ def main():
 #
     # Main control loop
     while True:
+        print("Main Loop is Working")
         try:
             raw, addr = tank_socket.recvfrom(JSON_DOCUMENT_SIZE)
         except socket.timeout:
