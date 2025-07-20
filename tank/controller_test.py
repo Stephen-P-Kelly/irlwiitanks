@@ -53,17 +53,17 @@ def main():
     print(f"Socket bound on {TANK_IP_ADDR}:{TANK_RX_PORT} with timeout {SOCKET_TIMEOUT}s")
 
     # Handshake phase
-    while True:
-        print("Waiting for controller handshake...")
-        try:
-            data, addr = tank_socket.recvfrom(JSON_DOCUMENT_SIZE)
-            msg = data.decode("utf-8")
-        except socket.timeout:
-            print("No handshake packet—retrying...")
-            continue
-        except UnicodeDecodeError as e:
-            print("Corrupt handshake bytes:", e)
-            continue
+#    while True:
+#        print("Waiting for controller handshake...")
+#        try:
+#            data, addr = tank_socket.recvfrom(JSON_DOCUMENT_SIZE)
+#            msg = data.decode("utf-8")
+#        except socket.timeout:
+#            print("No handshake packet—retrying...")
+#            continue
+#        except UnicodeDecodeError as e:
+#            print("Corrupt handshake bytes:", e)
+#            continue
 
         print(f"Received handshake message: '{msg}' from {addr}")
         if msg == HANDSHAKE_MSG and addr[0] == CONTROLLER_IP_ADDR:
