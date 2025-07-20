@@ -116,11 +116,3 @@ if __name__ == "__main__":
         main()
     except KeyboardInterrupt:
         print("\nKeyboardInterrupt caught. Exiting...")
-    try:
-        if left_motor:  left_motor.standby(True)
-        if right_motor:  right_motor.standby(True)
-        if servo:       servo.stop()
-        if tank_socket: tank_socket.close()
-    except Exception as e:
-        print("Error during cleanup:", e)
-    print("Cleanup complete.")
