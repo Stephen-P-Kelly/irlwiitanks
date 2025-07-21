@@ -1,0 +1,39 @@
++==========+
+| Computer |
++==========+
+DONE - Set up network
+- Get Pi to connect to network
+- Get ESP32 to connect to network
+DONE - Increase network capacity
+DONE - MQTT broker
+- Make script that will:
+  1. Turn on hotspot
+  2. Run mqtt broker script
+
++====+
+| Pi |
++====+
+- Give static IP's (https://www.tomshardware.com/how-to/static-ip-raspberry-pi)
+DONE - MQTT client
+- Video streaming
+  - Make resolution 1920x1080 or 720x540
+  - Fullscreen video
+  - Landing page to select tank stream
+  - Video overlay with health (& battery %'s???)
+- Make script that will setup all other scripts using multithreading
+  Prelim:
+    Run Pi GPIO daemon using "sudo pigpior"
+  1. Streaming
+  2. MQTT client
+  3. Tank communication
+
++=======+
+| ESP32 |
++=======+
+DONE - Give static IP
+DONE - Create json packet with controller data (sent at 50 Hz to tank)
+  DONE - Send button state ("BUTTON_DOWN" and "BUTTON_UP")
+DONE - Determine if button debouncing is needed
+- Establish UDP connection with Pi (Send a packet)
+
+
